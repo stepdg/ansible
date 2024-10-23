@@ -1,0 +1,18 @@
+- name: Set hostname
+  hosts: all
+  become: true
+
+  vars_prompt:
+    - prompt: |-
+
+        The IP/hostname of the target system should have been the --limit when you ran the playbook.
+        If you did not use the IP, the current hostname of the target system should be in inventory.
+
+        If not, cancel now.
+
+        What is the new hostname (hostname / hostname.domain.com)?
+      name: new_hostname
+      private: false # shows the user input
+
+  roles:
+    - set_hostname

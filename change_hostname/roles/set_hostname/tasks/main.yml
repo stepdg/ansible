@@ -1,0 +1,12 @@
+- name: Set a hostname
+  ansible.builtin.hostname:
+    name: "{{ new_hostname }}"
+
+## this is an alternate method in case the main method doesn't work
+# - name: Set a hostname specifying strategy
+#  ansible.builtin.hostname:
+#    name: "{{ new_hostname }}"
+#    use: systemd
+
+- name: Unconditionally reboot the machine with all defaults
+  ansible.builtin.reboot:
